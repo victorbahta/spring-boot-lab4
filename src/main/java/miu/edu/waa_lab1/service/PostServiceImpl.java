@@ -2,29 +2,35 @@ package miu.edu.waa_lab1.service;
 
 import miu.edu.waa_lab1.domain.Post;
 import miu.edu.waa_lab1.domain.PostDto;
-import miu.edu.waa_lab1.repository.PostsRepo;
+import miu.edu.waa_lab1.repository.PostRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class PostServiceImpl implements PostService{
-    private PostsRepo posts;
+public class PostServiceImpl{
     @Autowired
-    public PostServiceImpl(PostsRepo pr) {
+    private PostRepo posts;
+    @Autowired
+    public PostServiceImpl(PostRepo pr) {
         this.posts = pr;
     }
     @Autowired
     ModelMapper modelMapper;
-    @Override
+
+
+
     public List<Post> getPosts() {
-        return posts.getPosts();
+        return posts.findAll();
     }
 
-    @Override
-    public PostDto getPostById(long id) {
-        return modelMapper.map(posts.getPostById(id), PostDto.class);
+    public PostDto getPostById(int id) {
+        return modelMapper.map(posts.findById(id), PostDto.class);
+    }
+
+    public void save(Post p) {
+        posts.save(p);
     }
 
 

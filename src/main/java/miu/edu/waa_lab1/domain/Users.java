@@ -4,20 +4,19 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@AllArgsConstructor
+import java.util.List;
+
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
-public class Post {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-    String title;
-    String content;
-    String author;
-    @ManyToOne
+    String name;
+    @OneToMany
     @JoinColumn(name = "user_id")
-    Users user;
+    List<Post> posts;
 }

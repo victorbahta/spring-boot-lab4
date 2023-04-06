@@ -13,7 +13,7 @@ public class WaaLab1Application {
 	}
 
 	@Bean
-	public long longBean() {
+	public int longBean() {
 		return 1;
 	}
 
