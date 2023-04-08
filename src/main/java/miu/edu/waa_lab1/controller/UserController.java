@@ -31,9 +31,13 @@ public class UserController {
     }
 
     @GetMapping("/{id}/posts")
-    public List<Post> findPostsByUser(@PathVariable("id") long id) {
+    public List<Post> findPostsByUser(@PathVariable("id") int id) {
 
-        return postRepo.findByUserId(Long.valueOf( id));
+        return postRepo.findByUserId(id);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable("id") int id) {
+        userService.deleteUser(id);
     }
 
     @PostMapping("/{id}/posts")
@@ -43,8 +47,6 @@ public class UserController {
     }
     @PostMapping
     public void save(@RequestBody Users u) {
-        System.out.println("ui" + u.getId());
-        System.out.println("uin" + u.getName());
         userService.save(u);
     }
 

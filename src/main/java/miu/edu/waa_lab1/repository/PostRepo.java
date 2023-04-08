@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PostRepo extends CrudRepository<Post,Integer> {
      List<Post> findAll();
-     List<Post> findByUserId(Long id);
+     List<Post> findByUserId(int user_id);
 
      Post findById(int id);
 

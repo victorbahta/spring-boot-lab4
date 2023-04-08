@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -20,4 +22,8 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "user_id")
     Users user;
+    @OneToMany
+
+    @JoinColumn(name = "post_id")
+    List<Comment> comments;
 }

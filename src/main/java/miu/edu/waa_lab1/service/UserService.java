@@ -21,6 +21,10 @@ public class UserService {
         return userRepo.findAll();
     }
 
+    public void deleteUser(int id) {
+        userRepo.deleteById(id);
+    }
+
     public Users findById(int id) {
         return userRepo.findById(Integer.valueOf(id)).orElse(null);
     }

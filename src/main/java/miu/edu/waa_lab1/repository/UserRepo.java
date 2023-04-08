@@ -13,6 +13,6 @@ public interface UserRepo extends CrudRepository<Users, Integer> {
 
     @Override
     Optional<Users> findById(Integer integer);
-
+    void deleteById(Integer id);
     Users save(Users u);
 }
