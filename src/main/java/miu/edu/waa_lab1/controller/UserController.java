@@ -1,5 +1,6 @@
 package miu.edu.waa_lab1.controller;
 
+import miu.edu.waa_lab1.annotations.ExecutionTime;
 import miu.edu.waa_lab1.domain.Post;
 import miu.edu.waa_lab1.domain.Users;
 import miu.edu.waa_lab1.repository.PostRepo;
@@ -20,11 +21,12 @@ public class UserController {
         this.userService = userService;
         this.postRepo = pr;
     }
+    @ExecutionTime
     @GetMapping
     public List<Users> findAll() {
         return this.userService.findAll();
     }
-
+    @ExecutionTime
     @GetMapping("/{id}")
     public Users findUserById(@PathVariable("id") int id) {
         return this.userService.findById(id);
@@ -40,11 +42,13 @@ public class UserController {
         userService.deleteUser(id);
     }
 
+    @ExecutionTime
     @PostMapping("/{id}/posts")
     public void savePostByUser(@PathVariable("id") int id, @RequestBody Post p) {
         p.setUser(userService.findById(id));
          postRepo.save(p);
     }
+    @ExecutionTime
     @PostMapping
     public void save(@RequestBody Users u) {
         userService.save(u);
